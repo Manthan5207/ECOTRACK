@@ -3,7 +3,7 @@ import { Card } from '../common/Card';
 import { GREEN_CHOICES } from '../../data/points';
 import { useLeaderboardStore } from '../../store/useLeaderboardStore';
 import { useToast } from '../common/Toast';
-import { Leaf, Check, Sparkles } from 'lucide-react';
+import { Sparkles, Check, Activity } from 'lucide-react';
 
 export default function GreenChoiceWidget() {
   const { addPoints, events } = useLeaderboardStore();
@@ -26,18 +26,18 @@ export default function GreenChoiceWidget() {
 
     const res = addPoints('greenChoice', choice.id, choice.points, choice.category, choice.label);
     if (res.success) {
-      addToast({ message: `+${choice.points} Eco Points! Logged "${choice.label}" 🌿`, type: 'success' });
+      addToast({ message: `+${choice.points} Eco Points! Logged "${choice.label}" 🌊`, type: 'success' });
     } else {
       addToast({ message: res.reason || 'Could not add points.', type: 'warning' });
     }
   };
 
   return (
-    <Card className="p-5 border-emerald-500/20" hover={false}>
+    <Card className="p-5 border-blue-500/20" hover={false}>
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
-          <div className="p-2 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
-            <Leaf className="w-4 h-4" />
+          <div className="p-2 rounded-xl bg-blue-500/15 text-blue-600 dark:text-cyan-400">
+            <Activity className="w-4 h-4" />
           </div>
           <div>
             <h3 className="font-heading font-bold text-sm text-slate-900 dark:text-white">
@@ -49,7 +49,7 @@ export default function GreenChoiceWidget() {
           </div>
         </div>
 
-        <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-mono">
+        <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-cyan-400 font-mono border border-blue-500/20">
           +15 pts / choice
         </span>
       </div>
@@ -66,8 +66,8 @@ export default function GreenChoiceWidget() {
               type="button"
               className={`p-3 rounded-2xl text-left border transition-all flex items-center justify-between gap-2 ${
                 isDone
-                  ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-800 dark:text-emerald-200 cursor-default'
-                  : 'bg-white/60 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800 hover:border-emerald-500/40 hover:bg-emerald-50/50 dark:hover:bg-slate-800'
+                  ? 'bg-blue-500/15 border-blue-500/40 text-blue-950 dark:text-cyan-200 cursor-default'
+                  : 'bg-white/60 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800 hover:border-cyan-500/40 hover:bg-blue-50/50 dark:hover:bg-slate-800'
               }`}
             >
               <div className="flex items-center gap-2 min-w-0">
@@ -76,7 +76,7 @@ export default function GreenChoiceWidget() {
               </div>
 
               <div className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 ${
-                isDone ? 'bg-emerald-500 text-white border-emerald-500' : 'border-slate-300 dark:border-slate-700'
+                isDone ? 'bg-blue-600 text-white border-blue-600 shadow-glow-blue' : 'border-slate-300 dark:border-slate-700'
               }`}>
                 {isDone && <Check className="w-3 h-3 stroke-[3]" />}
               </div>

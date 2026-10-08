@@ -4,71 +4,87 @@
 
 @layer base {
   :root {
-    --primary: #10B981;
-    --primary-dark: #064E3B;
-    --accent: #38BDF8;
-    --bg-light: #F0FDF4;
-    --bg-dark: #080E14;
-    --surface-light: #FFFFFF;
-    --surface-dark: #0D1B1E;
+    --primary: #2563EB;
+    --primary-dark: #1D4ED8;
+    --accent-cyan: #06B6D4;
+    --accent-sky: #38BDF8;
+    --bg-light: #F0F9FF;
+    --bg-dark: #030712;
   }
 
   body {
     @apply antialiased overflow-x-hidden font-sans;
     background-color: var(--bg-light);
+    color: #0F172A;
   }
 
   .dark body {
     background-color: var(--bg-dark);
+    color: #F8FAFC;
+    background-image: 
+      radial-gradient(at 10% 20%, rgba(37, 99, 235, 0.12) 0px, transparent 50%),
+      radial-gradient(at 90% 10%, rgba(6, 182, 212, 0.10) 0px, transparent 50%),
+      radial-gradient(at 50% 80%, rgba(30, 58, 138, 0.15) 0px, transparent 60%);
+    background-attachment: fixed;
   }
 
-  /* Frosted Glass Base */
+  /* Frosted Glass Elements (Electric Ocean Blue) */
   .glass {
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(186, 230, 253, 0.6);
   }
 
   .dark .glass {
-    background: rgba(13, 27, 30, 0.75);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(16, 185, 129, 0.2);
+    background: rgba(11, 20, 44, 0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(56, 189, 248, 0.20);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
   }
 
   .glass-card {
-    background: rgba(255, 255, 255, 0.82);
+    background: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 255, 255, 0.85);
-    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 0 1px 1px rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(186, 230, 253, 0.7);
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.06);
   }
 
   .dark .glass-card {
-    background: rgba(13, 27, 30, 0.82);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(16, 185, 129, 0.18);
-    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(56, 189, 248, 0.20);
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.50);
+  }
+
+  .glass-card:hover {
+    border-color: rgba(56, 189, 248, 0.40);
+  }
+
+  .dark .glass-card:hover {
+    background: rgba(23, 37, 84, 0.80);
+    border-color: rgba(56, 189, 248, 0.45);
   }
 
   .glass-hero-canvas {
-    background: radial-gradient(circle at 80% 30%, rgba(56, 189, 248, 0.35) 0%, rgba(16, 185, 129, 0.45) 45%, rgba(240, 253, 244, 0.85) 85%);
+    background: radial-gradient(circle at 75% 35%, rgba(56, 189, 248, 0.25) 0%, rgba(37, 99, 235, 0.15) 45%, rgba(240, 249, 255, 0.95) 85%);
   }
 
   .dark .glass-hero-canvas {
-    background: radial-gradient(circle at 80% 30%, rgba(14, 116, 144, 0.35) 0%, rgba(6, 78, 59, 0.45) 45%, rgba(8, 14, 20, 0.95) 85%);
+    background: radial-gradient(circle at 75% 35%, rgba(37, 99, 235, 0.25) 0%, rgba(6, 182, 212, 0.15) 45%, rgba(3, 7, 18, 0.98) 85%);
   }
 
   .glass-panel {
-    background: rgba(255, 255, 255, 0.94);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
   }
 
   .dark .glass-panel {
-    background: rgba(10, 20, 24, 0.95);
+    background: rgba(11, 20, 44, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
   }
@@ -85,15 +101,15 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(16, 185, 129, 0.25);
+  background: rgba(37, 99, 235, 0.30);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(16, 185, 129, 0.5);
+  background: rgba(37, 99, 235, 0.60);
 }
 
-/* Range Slider */
+/* Custom Range Slider */
 input[type=range] {
   -webkit-appearance: none;
   background: transparent;
@@ -105,24 +121,24 @@ input[type=range]:focus {
 
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  height: 22px;
-  width: 22px;
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
-  background: #10B981;
+  background: #2563EB;
   cursor: pointer;
-  box-shadow: 0 0 12px rgba(16, 185, 129, 0.7);
-  border: 2.5px solid #ffffff;
-  margin-top: -7px;
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.7);
+  border: 2px solid #ffffff;
+  margin-top: -6px;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .dark input[type=range]::-webkit-slider-thumb {
-  border-color: #080E14;
+  border-color: #030712;
 }
 
 input[type=range]::-webkit-slider-thumb:hover {
   transform: scale(1.15);
-  box-shadow: 0 0 18px rgba(16, 185, 129, 0.9);
+  box-shadow: 0 0 18px rgba(37, 99, 235, 0.9);
 }
 
 input[type=range]::-webkit-slider-runnable-track {
@@ -136,3 +152,4 @@ input[type=range]::-webkit-slider-runnable-track {
 .dark input[type=range]::-webkit-slider-runnable-track {
   background: #1e293b;
 }
+

@@ -1,5 +1,5 @@
 /**
- * Points configuration and constants for EcoSphere Leaderboard
+ * Points configuration and constants for EcoTrack Leaderboard
  */
 
 export const POINT_VALUES = {
@@ -17,8 +17,8 @@ export const POINT_VALUES = {
   // Daily Green Choice Logs (15 pts each, max 3/day)
   greenChoice: 15,
 
-  // What If? / Scenario Simulations
-  simulationRun: 5, // Max 3/day
+  // Daily Activity Logging
+  activityLogged: 10, // Max 3/day
 
   // Consecutive Streak Bonus (Day 3+)
   streakBonusPerDay: 10, // Max 50 pts / week
@@ -27,7 +27,7 @@ export const POINT_VALUES = {
   // Limits
   weeklyUserPointsCap: 600,
   maxDailyGreenChoices: 3,
-  maxDailySimulations: 3,
+  maxDailyActivities: 3,
 };
 
 export const GREEN_CHOICES = [
@@ -41,9 +41,9 @@ export const GREEN_CHOICES = [
 export const POINT_RULES_INFO = [
   { action: 'Pledge an Action', points: '10 - 30 pts', freq: 'Per pledge based on difficulty (Easy: 10, Med: 20, Hard: 30)' },
   { action: 'Complete Carbon Audit', points: '25 pts', freq: 'Once per weekly season' },
-  { action: 'Daily Green Choice Log', points: '15 pts each', freq: 'Up to 3 choices daily (Max 45 pts/day)' },
+  { action: 'Daily Activity / Green Choice', points: '10 - 15 pts each', freq: 'Up to 3 choices daily (Max 45 pts/day)' },
   { action: 'Dashboard Check-In', points: '5 pts', freq: 'Once per day' },
-  { action: 'Run Climate Simulation', points: '5 pts', freq: 'Up to 3 simulations daily (Max 15 pts/day)' },
+  { action: 'Daily Activity Tracker Log', points: '10 pts', freq: 'Up to 3 activities daily (Max 30 pts/day)' },
   { action: 'Streak Bonus (Day 3+)', points: '+10 pts/day', freq: 'Consecutive active days (Capped at 50 pts/week)' },
   { action: 'Weekly Maximum Cap', points: '600 pts cap', freq: 'Protects competition fairness against spam' },
 ];

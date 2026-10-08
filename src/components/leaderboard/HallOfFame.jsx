@@ -29,11 +29,11 @@ export default function HallOfFame({ records = [] }) {
         {records.map((item, idx) => (
           <div
             key={idx}
-            className="p-4 rounded-2xl bg-gradient-to-br from-white to-slate-50 dark:from-[#0D1B1E] dark:to-[#091417] border border-slate-200/80 dark:border-emerald-500/20 shadow-sm space-y-2 relative overflow-hidden"
+            className="p-4 rounded-2xl bg-gradient-to-br from-white to-slate-50 dark:from-[#0B132B] dark:to-[#030712] border border-slate-200/80 dark:border-blue-500/20 shadow-sm space-y-2 relative overflow-hidden"
           >
             {/* Top Season Date Tag */}
             <div className="flex items-center justify-between text-[10px] text-slate-400">
-              <span className="font-semibold text-emerald-600 dark:text-emerald-400 font-mono">
+              <span className="font-semibold text-blue-600 dark:text-cyan-400 font-mono">
                 {item.weekId}
               </span>
               <span>{item.weekLabel?.split('–')[0]}</span>
@@ -42,7 +42,7 @@ export default function HallOfFame({ records = [] }) {
             {/* Winner Identity */}
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-full bg-slate-900 text-amber-400 font-heading font-black text-xs flex items-center justify-center shrink-0 border border-amber-400/40">
-                {item.initials || 'EC'}
+                {item.initials || 'ET'}
               </div>
               <div className="min-w-0">
                 <h4 className="font-heading font-bold text-sm text-slate-900 dark:text-white truncate">

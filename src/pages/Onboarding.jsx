@@ -11,7 +11,7 @@ import {
   Check, 
   ArrowRight, 
   ArrowLeft,
-  Leaf
+  Activity
 } from 'lucide-react';
 import { useAuthStore } from '../store/useAuthStore';
 import { useToast } from '../components/common/Toast';
@@ -44,16 +44,16 @@ export default function Onboarding() {
       ...formData,
       hasCompletedOnboarding: true,
     });
-    addToast({ message: 'Profile setup complete! Welcome to EcoSphere.', type: 'success' });
+    addToast({ message: 'Profile setup complete! Welcome to EcoTrack.', type: 'success' });
     navigate('/dashboard', { replace: true });
   };
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8 pb-16">
-      <div className="glass-card p-6 sm:p-10 rounded-3xl border border-emerald-500/20 shadow-xl space-y-6">
+      <div className="glass-card p-6 sm:p-10 rounded-3xl border border-blue-500/20 shadow-xl space-y-6">
         {/* Header */}
         <div className="text-center space-y-2">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-cyan-400 text-xs font-bold uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Welcome Setup (Step {step} of 2)</span>
           </div>
@@ -85,7 +85,7 @@ export default function Onboarding() {
                   type="text"
                   value={formData.displayName}
                   onChange={(e) => handleChange('displayName', e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:border-emerald-500 focus:outline-none"
+                  className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:border-blue-500 focus:outline-none"
                 />
               </div>
 
@@ -96,7 +96,7 @@ export default function Onboarding() {
                 <div className="space-y-2">
                   <CitySearch onSelectCity={(city) => handleChange('homeCity', city)} />
                   <div className="text-xs text-slate-500 flex items-center gap-1">
-                    <MapPin className="w-3.5 h-3.5 text-emerald-500" />
+                    <MapPin className="w-3.5 h-3.5 text-cyan-400" />
                     <span>Selected: <strong>{formData.homeCity.name}</strong> ({formData.homeCity.admin1 ? `${formData.homeCity.admin1}, ` : ''}{formData.homeCity.country})</span>
                   </div>
                 </div>
@@ -110,7 +110,7 @@ export default function Onboarding() {
                   <select
                     value={formData.householdSize}
                     onChange={(e) => handleChange('householdSize', parseInt(e.target.value))}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:border-emerald-500 focus:outline-none"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:border-blue-500 focus:outline-none"
                   >
                     {[1, 2, 3, 4, 5, 6, 7, 8].map(n => (
                       <option key={n} value={n}>{n} {n === 1 ? 'Person (Solo)' : 'People'}</option>
@@ -125,7 +125,7 @@ export default function Onboarding() {
                   <select
                     value={formData.homeType}
                     onChange={(e) => handleChange('homeType', e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:border-emerald-500 focus:outline-none"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:border-blue-500 focus:outline-none"
                   >
                     <option value="apartment">Apartment / Flat</option>
                     <option value="independent house">Independent House / Villa</option>
@@ -138,7 +138,7 @@ export default function Onboarding() {
                 <button
                   type="button"
                   onClick={() => setStep(2)}
-                  className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-heading font-bold text-sm shadow-glow-emerald transition-all active:scale-95"
+                  className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-heading font-bold text-sm shadow-glow-blue transition-all active:scale-95"
                 >
                   <span>Continue</span>
                   <ArrowRight className="w-4 h-4" />
@@ -160,7 +160,7 @@ export default function Onboarding() {
                 <select
                   value={formData.mainCommute}
                   onChange={(e) => handleChange('mainCommute', e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:border-emerald-500 focus:outline-none"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:border-blue-500 focus:outline-none"
                 >
                   <option value="metro-train">Metro Train / Subway (Low Carbon)</option>
                   <option value="bus">Public Bus Transit</option>
@@ -179,7 +179,7 @@ export default function Onboarding() {
                   <select
                     value={formData.dietType}
                     onChange={(e) => handleChange('dietType', e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:border-emerald-500 focus:outline-none"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:border-blue-500 focus:outline-none"
                   >
                     <option value="vegan">Vegan (100% Plant-Based)</option>
                     <option value="vegetarian">Vegetarian (Dairy & Plants)</option>
@@ -199,7 +199,7 @@ export default function Onboarding() {
                     max="1500"
                     value={formData.monthlyElectricityKwh}
                     onChange={(e) => handleChange('monthlyElectricityKwh', parseInt(e.target.value) || 100)}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:border-emerald-500 focus:outline-none"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:border-blue-500 focus:outline-none"
                   />
                 </div>
               </div>
@@ -217,10 +217,10 @@ export default function Onboarding() {
                 <button
                   type="button"
                   onClick={handleFinish}
-                  className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-heading font-bold text-sm shadow-glow-emerald transition-all active:scale-95"
+                  className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-heading font-bold text-sm shadow-glow-blue transition-all active:scale-95"
                 >
                   <span>Take me to my dashboard</span>
-                  <Leaf className="w-4 h-4" />
+                  <Activity className="w-4 h-4" />
                 </button>
               </div>
             </motion.div>

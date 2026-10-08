@@ -32,7 +32,7 @@ export default function CombinedInsightBanner({ aqiData, cityName = 'Delhi' }) {
           <div>
             <div className="flex items-center gap-2 mb-1">
               <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
-                EcoSphere Personalised Insight
+                EcoTrack Personalised Insight
               </span>
               <span className="text-xs text-slate-400">• Live Synergy</span>
             </div>

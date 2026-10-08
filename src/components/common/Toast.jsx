@@ -20,10 +20,10 @@ export function ToastProvider({ children }) {
   };
 
   const icons = {
-    success: <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />,
+    success: <CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0" />,
     warning: <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0" />,
     error: <XCircle className="w-5 h-5 text-rose-500 shrink-0" />,
-    info: <Info className="w-5 h-5 text-sky-500 shrink-0" />,
+    info: <Info className="w-5 h-5 text-blue-400 shrink-0" />,
   };
 
   return (
@@ -37,7 +37,7 @@ export function ToastProvider({ children }) {
               initial={{ opacity: 0, y: 20, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -20, scale: 0.9 }}
-              className="pointer-events-auto flex items-center justify-between gap-3 p-4 rounded-2xl glass-panel shadow-2xl border border-emerald-500/30 text-slate-800 dark:text-white"
+              className="pointer-events-auto flex items-center justify-between gap-3 p-4 rounded-2xl glass-panel shadow-2xl border border-blue-500/30 text-slate-800 dark:text-white"
             >
               <div className="flex items-center gap-3">
                 {icons[toast.type] || icons.success}
@@ -58,9 +58,9 @@ export function ToastProvider({ children }) {
 }
 
 export function useToast() {
-  const ctx = useContext(ToastContext);
-  if (!ctx) {
-    return { addToast: console.log };
+  const context = useContext(ToastContext);
+  if (!context) {
+    throw new Error('useToast must be used within a ToastProvider');
   }
-  return ctx;
+  return context;
 }

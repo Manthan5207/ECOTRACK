@@ -2,7 +2,7 @@ import { isFirebaseConfigured } from './firebase';
 import { useLeaderboardStore } from '../store/useLeaderboardStore';
 
 /**
- * Storage Adapter for EcoSphere Leaderboard.
+ * Storage Adapter for EcoTrack Leaderboard.
  * Prototype default: local state backed by Zustand & localStorage.
  * Production ready: Structured to easily connect Firestore listeners without breaking offline usage.
  */

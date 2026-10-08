@@ -58,9 +58,9 @@ export default function Learn() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-10">
       {/* Title */}
-      <div className="pb-2 border-b border-emerald-500/10">
+      <div className="pb-2 border-b border-blue-500/10">
         <div className="flex items-center gap-2">
-          <BookOpen className="w-6 h-6 text-emerald-500" />
+          <BookOpen className="w-6 h-6 text-cyan-400" />
           <h1 className="text-2xl sm:text-3xl font-heading font-black text-slate-900 dark:text-white">
             Ecological Knowledge & Climate Science
           </h1>
@@ -81,7 +81,7 @@ export default function Learn() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {MYTHS.map((item, idx) => (
-            <Card key={idx} className="p-6 flex flex-col justify-between border-emerald-500/20" hover={true}>
+            <Card key={idx} className="p-6 flex flex-col justify-between border-blue-500/20" hover={true}>
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-full">
                   {item.category}
@@ -90,7 +90,7 @@ export default function Learn() {
                   ❌ Myth: "{item.myth}"
                 </h4>
                 <p className="text-xs text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
-                  <strong className="text-emerald-600 dark:text-emerald-400 font-bold block mb-1">✅ Scientific Reality:</strong>
+                  <strong className="text-blue-600 dark:text-cyan-400 font-bold block mb-1">✅ Scientific Reality:</strong>
                   {item.fact}
                 </p>
               </div>
@@ -102,7 +102,7 @@ export default function Learn() {
       {/* 2. Interactive FAQ Accordion */}
       <div>
         <div className="flex items-center gap-2 mb-4">
-          <HelpCircle className="w-5 h-5 text-emerald-500" />
+          <HelpCircle className="w-5 h-5 text-cyan-400" />
           <h2 className="text-lg font-heading font-bold text-slate-900 dark:text-white">
             Frequently Asked Environmental Questions
           </h2>
@@ -115,7 +115,7 @@ export default function Learn() {
             return (
               <div
                 key={idx}
-                className="rounded-2xl glass-card border border-emerald-500/20 overflow-hidden transition-all"
+                className="rounded-2xl glass-card border border-blue-500/20 overflow-hidden transition-all"
               >
                 <button
                   onClick={() => setOpenFaq(isOpen ? -1 : idx)}
@@ -124,7 +124,7 @@ export default function Learn() {
                   <span className="text-sm sm:text-base font-heading font-bold text-slate-900 dark:text-white">
                     {faq.q}
                   </span>
-                  <ChevronDown className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-emerald-500' : ''}`} />
+                  <ChevronDown className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-cyan-400' : ''}`} />
                 </button>
 
                 {isOpen && (
@@ -137,44 +137,6 @@ export default function Learn() {
           })}
         </div>
       </div>
-
-      {/* 3. Scientific Environmental Glossary */}
-      <Card className="p-6" hover={false}>
-        <h3 className="text-base font-heading font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-          <Sparkles className="w-5 h-5 text-sky-500" />
-          Core Metric Reference Index
-        </h3>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800">
-            <h4 className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">US AQI</h4>
-            <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">
-              Standardized index (0–500) translating composite multi-pollutant concentrations into uniform public health warnings.
-            </p>
-          </div>
-
-          <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800">
-            <h4 className="text-xs font-bold text-sky-600 dark:text-sky-400 uppercase">CO₂e (Equivalent)</h4>
-            <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">
-              Metric converting other greenhouse gases (methane, nitrous oxide) into the equivalent warming effect of CO₂.
-            </p>
-          </div>
-
-          <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800">
-            <h4 className="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase">Urban Heat Island (UHI)</h4>
-            <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">
-              Metropolitan areas being significantly warmer (2°C–5°C) than surrounding rural areas due to concrete heat retention.
-            </p>
-          </div>
-
-          <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800">
-            <h4 className="text-xs font-bold text-purple-600 dark:text-purple-400 uppercase">IPCC 1.5°C Budget</h4>
-            <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">
-              Target per-capita ceiling of ~2.3 tonnes CO₂e/yr required to prevent irreversible climate tipping points.
-            </p>
-          </div>
-        </div>
-      </Card>
     </div>
   );
 }

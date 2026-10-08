@@ -11,14 +11,14 @@ import { useAuthStore } from './store/useAuthStore';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Calculator from './pages/Calculator';
-import WhatIf from './pages/WhatIf';
+import ActivityTracker from './pages/ActivityTracker';
 import ActionPlan from './pages/ActionPlan';
+import Leaderboard from './pages/Leaderboard';
+import News from './pages/News';
 import Learn from './pages/Learn';
 import Login from './pages/Login';
 import Onboarding from './pages/Onboarding';
 import Profile from './pages/Profile';
-import Leaderboard from './pages/Leaderboard';
-import PitchDeck from './pages/PitchDeck';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -31,8 +31,6 @@ function ScrollToTop() {
 function MainApp() {
   const { theme } = useStore();
   const { initAuthSubscriber } = useAuthStore();
-  const location = useLocation();
-  const isPitchDeck = location.pathname === '/pitch' || location.pathname === '/presentation';
 
   useEffect(() => {
     const unsub = initAuthSubscriber();
@@ -49,20 +47,8 @@ function MainApp() {
     }
   }, [theme]);
 
-  if (isPitchDeck) {
-    return (
-      <div className="min-h-screen bg-[#050C0E] text-slate-100">
-        <ScrollToTop />
-        <Routes>
-          <Route path="/pitch" element={<PitchDeck />} />
-          <Route path="/presentation" element={<PitchDeck />} />
-        </Routes>
-      </div>
-    );
-  }
-
   return (
-    <div className="flex flex-col min-h-screen bg-[#F0FDF4] dark:bg-[#080E14] text-slate-800 dark:text-slate-100 transition-colors duration-300">
+    <div className="flex flex-col min-h-screen bg-[#F0F9FF] dark:bg-[#030712] text-slate-800 dark:text-slate-100 transition-colors duration-300">
       <ScrollToTop />
       <Navbar />
       <main className="flex-1 w-full pt-4">
@@ -73,12 +59,11 @@ function MainApp() {
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/calculator" element={<Calculator />} />
-          <Route path="/whatif" element={<WhatIf />} />
+          <Route path="/tracker" element={<ActivityTracker />} />
           <Route path="/actions" element={<ProtectedRoute><ActionPlan /></ProtectedRoute>} />
           <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/news" element={<News />} />
           <Route path="/learn" element={<Learn />} />
-          <Route path="/pitch" element={<PitchDeck />} />
-          <Route path="/presentation" element={<PitchDeck />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

@@ -11,7 +11,7 @@ export default function WeekEndedModal({ isOpen, onClose, winner, userRank = 4, 
           particleCount: 60,
           spread: 80,
           origin: { y: 0.4 },
-          colors: ['#F59E0B', '#10B981', '#38BDF8', '#EC4899']
+          colors: ['#F59E0B', '#2563EB', '#38BDF8', '#06B6D4']
         });
       } catch (e) {}
     }
@@ -62,7 +62,7 @@ export default function WeekEndedModal({ isOpen, onClose, winner, userRank = 4, 
               <span className="font-heading font-black text-lg text-slate-900 dark:text-white">
                 {winner?.name || winner?.winnerName || 'Rohit Kulkarni'}
               </span>
-              <span className="font-heading font-black text-base text-amber-500">
+              <span className="font-heading font-black text-base text-amber-500 font-mono">
                 {winner?.points || winner?.weeklyPoints || 470} pts
               </span>
             </div>
@@ -76,7 +76,7 @@ export default function WeekEndedModal({ isOpen, onClose, winner, userRank = 4, 
             <span className="text-[10px] text-slate-400 uppercase font-semibold block">Your Season Result</span>
             <div className="flex items-center justify-between mt-1">
               <div>
-                <span className="font-heading font-black text-xl text-emerald-600 dark:text-emerald-400">
+                <span className="font-heading font-black text-xl text-blue-600 dark:text-cyan-400">
                   Rank #{userRank}
                 </span>
                 <span className="text-xs text-slate-500 dark:text-slate-400 block">
@@ -85,7 +85,7 @@ export default function WeekEndedModal({ isOpen, onClose, winner, userRank = 4, 
               </div>
               <div className="text-right">
                 <span className="text-xs font-bold text-slate-700 dark:text-slate-300 block">
-                  {userRank <= 3 ? '🏆 Top 3 Podium Badge' : userRank <= 10 ? '⭐ Top 10 Finisher' : '🌱 Active Participant'}
+                  {userRank <= 3 ? '🏆 Top 3 Podium Badge' : userRank <= 10 ? '⭐ Top 10 Finisher' : '🌊 Active Participant'}
                 </span>
                 <span className="text-[10px] text-slate-400">Recorded to Hall of Fame</span>
               </div>
@@ -95,7 +95,7 @@ export default function WeekEndedModal({ isOpen, onClose, winner, userRank = 4, 
           {/* Start New Week CTA */}
           <button
             onClick={onClose}
-            className="w-full py-3 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-heading font-bold text-sm shadow-glow-emerald flex items-center justify-center gap-2 transition-all active:scale-95"
+            className="w-full py-3 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-heading font-bold text-sm shadow-glow-blue flex items-center justify-center gap-2 transition-all active:scale-95"
           >
             <span>Start New Weekly Season</span>
             <ArrowRight className="w-4 h-4" />

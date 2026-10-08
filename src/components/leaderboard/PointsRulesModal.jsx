@@ -13,11 +13,11 @@ export default function PointsRulesModal({ isOpen, onClose }) {
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.95, opacity: 0 }}
-          className="glass-card p-6 sm:p-8 rounded-3xl max-w-xl w-full border border-emerald-500/30 shadow-2xl space-y-5 max-h-[90vh] overflow-y-auto"
+          className="glass-card p-6 sm:p-8 rounded-3xl max-w-xl w-full border border-blue-500/30 shadow-2xl space-y-5 max-h-[90vh] overflow-y-auto"
         >
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-2.5">
-              <div className="w-10 h-10 rounded-2xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-2xl bg-blue-500/15 text-blue-600 dark:text-cyan-400 flex items-center justify-center">
                 <Trophy className="w-5 h-5" />
               </div>
               <div>
@@ -49,7 +49,7 @@ export default function PointsRulesModal({ isOpen, onClose }) {
                   <h4 className="font-bold text-slate-900 dark:text-white">{rule.action}</h4>
                   <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">{rule.freq}</p>
                 </div>
-                <span className="font-heading font-black text-sm px-2.5 py-1 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 shrink-0">
+                <span className="font-heading font-black text-sm px-2.5 py-1 rounded-xl bg-blue-500/15 text-blue-600 dark:text-cyan-400 shrink-0 font-mono">
                   {rule.points}
                 </span>
               </div>
@@ -57,8 +57,8 @@ export default function PointsRulesModal({ isOpen, onClose }) {
           </div>
 
           {/* Anti-cheat and Fair Play Notice */}
-          <div className="p-4 rounded-2xl bg-sky-500/10 dark:bg-sky-950/30 border border-sky-500/20 text-xs text-slate-700 dark:text-slate-300 space-y-1">
-            <div className="font-bold text-sky-600 dark:text-sky-400 flex items-center gap-1.5">
+          <div className="p-4 rounded-2xl bg-cyan-500/10 dark:bg-cyan-950/30 border border-cyan-500/20 text-xs text-slate-700 dark:text-slate-300 space-y-1">
+            <div className="font-bold text-cyan-600 dark:text-cyan-400 flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4" />
               <span>Fair Play & Weekly Season Reset</span>
             </div>
@@ -70,7 +70,7 @@ export default function PointsRulesModal({ isOpen, onClose }) {
           <div className="pt-2 flex justify-end">
             <button
               onClick={onClose}
-              className="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-heading font-bold text-xs shadow-glow-emerald transition-all"
+              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-heading font-bold text-xs shadow-glow-blue transition-all"
             >
               Got it, let's play!
             </button>

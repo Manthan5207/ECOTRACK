@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toPng } from 'html-to-image';
-import { X, Download, Share2, Sparkles, Leaf, Award, CheckCircle } from 'lucide-react';
+import { X, Download, Share2, Sparkles, Activity, Award, CheckCircle } from 'lucide-react';
 import { useStore } from '../../store/useStore';
 import { useToast } from './Toast';
 
@@ -23,7 +23,7 @@ export default function ShareModal({ isOpen, onClose }) {
       setDownloading(true);
       const dataUrl = await toPng(cardRef.current, { quality: 0.95, pixelRatio: 2 });
       const link = document.createElement('a');
-      link.download = `ecosphere-footprint-${location.name.toLowerCase()}.png`;
+      link.download = `ecotrack-footprint-${location.name.toLowerCase()}.png`;
       link.href = dataUrl;
       link.click();
       addToast({ message: 'Result card saved to your device!', type: 'success' });
@@ -39,8 +39,8 @@ export default function ShareModal({ isOpen, onClose }) {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'My EcoSphere Climate Footprint',
-          text: `My annual carbon footprint in ${location.name} is ${tonnes} tonnes/yr with an Eco Score of ${ecoScore}/100 on EcoSphere!`,
+          title: 'My EcoTrack Climate Footprint',
+          text: `My annual carbon footprint in ${location.name} is ${tonnes} tonnes/yr with an Eco Score of ${ecoScore}/100 on EcoTrack!`,
           url: window.location.origin
         });
         addToast({ message: 'Shared successfully!', type: 'success' });
@@ -59,7 +59,7 @@ export default function ShareModal({ isOpen, onClose }) {
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.92 }}
-          className="relative max-w-md w-full bg-slate-900 border border-emerald-500/30 rounded-3xl p-6 shadow-2xl text-white"
+          className="relative max-w-md w-full bg-slate-900 border border-blue-500/30 rounded-3xl p-6 shadow-2xl text-white"
         >
           {/* Close button */}
           <button
@@ -79,61 +79,61 @@ export default function ShareModal({ isOpen, onClose }) {
           {/* Exportable Card Node */}
           <div
             ref={cardRef}
-            className="p-6 rounded-2xl bg-gradient-to-br from-[#064E3B] via-[#0B1410] to-[#042f2e] border-2 border-emerald-400/30 shadow-2xl relative overflow-hidden"
+            className="p-6 rounded-2xl bg-gradient-to-br from-[#0B132B] via-[#0D1B2A] to-[#1B263B] border-2 border-blue-400/30 shadow-2xl relative overflow-hidden"
           >
             {/* Background Glows */}
-            <div className="absolute -top-12 -right-12 w-36 h-36 bg-emerald-500/20 rounded-full blur-2xl pointer-events-none"></div>
-            <div className="absolute -bottom-10 -left-10 w-36 h-36 bg-sky-500/20 rounded-full blur-2xl pointer-events-none"></div>
+            <div className="absolute -top-12 -right-12 w-36 h-36 bg-blue-500/20 rounded-full blur-2xl pointer-events-none"></div>
+            <div className="absolute -bottom-10 -left-10 w-36 h-36 bg-cyan-500/20 rounded-full blur-2xl pointer-events-none"></div>
 
             <div className="flex items-center justify-between mb-4 relative z-10">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center text-slate-950 font-bold">
-                  <Leaf className="w-5 h-5" />
+                <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold shadow-glow-blue">
+                  <Activity className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-heading font-bold text-emerald-400">EcoSphere</h4>
+                  <h4 className="text-sm font-heading font-bold text-cyan-400">EcoTrack</h4>
                   <p className="text-[10px] text-slate-400 uppercase tracking-wider">{location.name}, India</p>
                 </div>
               </div>
-              <div className="px-2.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-[11px] font-bold text-emerald-300 flex items-center gap-1">
+              <div className="px-2.5 py-1 rounded-full bg-blue-500/20 border border-cyan-400/30 text-[11px] font-bold text-cyan-300 flex items-center gap-1">
                 <Sparkles className="w-3 h-3" />
                 Eco Score: {ecoScore}/100
               </div>
             </div>
 
             <div className="my-5 text-center relative z-10">
-              <span className="text-[11px] uppercase tracking-widest text-emerald-300/80 font-semibold block mb-1">
+              <span className="text-[11px] uppercase tracking-widest text-cyan-300/80 font-semibold block mb-1">
                 Annual Carbon Footprint
               </span>
               <div className="flex items-baseline justify-center gap-1">
                 <span className="text-5xl font-heading font-black text-white tracking-tight">
                   {tonnes}
                 </span>
-                <span className="text-sm font-medium text-emerald-300">tonnes CO₂e / yr</span>
+                <span className="text-sm font-medium text-cyan-300">tonnes CO₂e / yr</span>
               </div>
-              <p className="text-xs text-emerald-200/70 mt-1">
+              <p className="text-xs text-blue-200/70 mt-1">
                 {tonnes <= 2.0 ? '🌟 Lower than Indian National Average (2.0t)' : '⚡ Active Climate Plan in Progress'}
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-2 pt-3 border-t border-emerald-500/20 relative z-10">
-              <div className="bg-slate-950/40 p-2.5 rounded-xl border border-emerald-500/10">
+            <div className="grid grid-cols-2 gap-2 pt-3 border-t border-blue-500/20 relative z-10">
+              <div className="bg-slate-950/50 p-2.5 rounded-xl border border-blue-500/10">
                 <span className="text-[10px] text-slate-400 uppercase block">Pledges Active</span>
                 <span className="text-sm font-bold text-white flex items-center gap-1 mt-0.5">
-                  <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
+                  <CheckCircle className="w-3.5 h-3.5 text-cyan-400" />
                   {pledges.length} Pledges
                 </span>
               </div>
-              <div className="bg-slate-950/40 p-2.5 rounded-xl border border-emerald-500/10">
+              <div className="bg-slate-950/50 p-2.5 rounded-xl border border-blue-500/10">
                 <span className="text-[10px] text-slate-400 uppercase block">Trees Offset</span>
-                <span className="text-sm font-bold text-teal-300 flex items-center gap-1 mt-0.5">
+                <span className="text-sm font-bold text-cyan-300 flex items-center gap-1 mt-0.5">
                   🌳 ~{treesEquivalent} Trees / yr
                 </span>
               </div>
             </div>
 
             <div className="mt-4 pt-2 text-center text-[9px] text-slate-400">
-              ecosphere.app • Understand • Simulate • Act
+              ecotrack.app • Monitor • Calculate • Act
             </div>
           </div>
 
@@ -142,7 +142,7 @@ export default function ShareModal({ isOpen, onClose }) {
             <button
               onClick={handleDownloadImage}
               disabled={downloading}
-              className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-heading font-bold text-sm shadow-glow-emerald transition-all active:scale-95 disabled:opacity-50"
+              className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-heading font-bold text-sm shadow-glow-blue transition-all active:scale-95 disabled:opacity-50"
             >
               <Download className="w-4 h-4" />
               {downloading ? 'Generating...' : 'Download Image'}

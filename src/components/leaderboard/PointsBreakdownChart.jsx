@@ -7,8 +7,8 @@ export default function PointsBreakdownChart({ breakdown = { transport: 40, ener
   const data = [
     { name: 'Transport', points: breakdown.transport || 0, color: '#38BDF8' },
     { name: 'Energy', points: breakdown.energy || 0, color: '#F59E0B' },
-    { name: 'Food', points: breakdown.food || 0, color: '#10B981' },
-    { name: 'Waste', points: breakdown.waste || 0, color: '#EC4899' },
+    { name: 'Food', points: breakdown.food || 0, color: '#2563EB' },
+    { name: 'Waste', points: breakdown.waste || 0, color: '#06B6D4' },
   ];
 
   const total = data.reduce((sum, d) => sum + d.points, 0);
@@ -19,7 +19,7 @@ export default function PointsBreakdownChart({ breakdown = { transport: 40, ener
         <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-slate-700 dark:text-slate-300">
           Points Activity Breakdown
         </h4>
-        <span className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400">
+        <span className="text-xs font-mono font-bold text-blue-600 dark:text-cyan-400">
           {total} pts total
         </span>
       </div>
@@ -38,7 +38,7 @@ export default function PointsBreakdownChart({ breakdown = { transport: 40, ener
             />
             <Tooltip 
               formatter={(val) => [`${val} points`, 'Eco Points']}
-              contentStyle={{ borderRadius: '8px', fontSize: '12px', background: '#0F172A', color: '#fff' }}
+              contentStyle={{ borderRadius: '8px', fontSize: '12px', background: '#0B132B', color: '#fff', border: '1px solid rgba(56, 189, 248, 0.2)' }}
             />
             <Bar dataKey="points" radius={[0, 6, 6, 0]}>
               {data.map((entry, index) => (
@@ -52,8 +52,8 @@ export default function PointsBreakdownChart({ breakdown = { transport: 40, ener
       <div className="grid grid-cols-2 gap-2 text-[11px] pt-1 text-slate-500 dark:text-slate-400">
         <span className="flex items-center gap-1.5"><Car className="w-3 h-3 text-sky-400" /> Transit: {breakdown.transport || 0}</span>
         <span className="flex items-center gap-1.5"><Zap className="w-3 h-3 text-amber-400" /> Energy: {breakdown.energy || 0}</span>
-        <span className="flex items-center gap-1.5"><Utensils className="w-3 h-3 text-emerald-400" /> Food: {breakdown.food || 0}</span>
-        <span className="flex items-center gap-1.5"><Trash2 className="w-3 h-3 text-pink-400" /> Waste: {breakdown.waste || 0}</span>
+        <span className="flex items-center gap-1.5"><Utensils className="w-3 h-3 text-blue-400" /> Food: {breakdown.food || 0}</span>
+        <span className="flex items-center gap-1.5"><Trash2 className="w-3 h-3 text-cyan-400" /> Waste: {breakdown.waste || 0}</span>
       </div>
     </Card>
   );

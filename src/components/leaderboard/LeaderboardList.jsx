@@ -33,19 +33,19 @@ export default function LeaderboardList({ rankedPlayers = [], currentUserId = nu
               <div
                 className={`p-3.5 sm:p-4 rounded-2xl transition-all flex items-center justify-between gap-3 border ${
                   isUser
-                    ? 'bg-emerald-500/15 dark:bg-emerald-950/40 border-emerald-500/50 shadow-glow-emerald/30 ring-1 ring-emerald-500/40'
-                    : 'glass-card border-white/60 dark:border-emerald-500/20 hover:border-emerald-500/30'
+                    ? 'bg-blue-500/15 dark:bg-blue-950/40 border-blue-500/50 shadow-glow-blue/30 ring-1 ring-cyan-500/40'
+                    : 'glass-card border-white/60 dark:border-blue-500/20 hover:border-cyan-500/30'
                 }`}
               >
                 {/* Left: Rank & Change Indicator */}
                 <div className="flex items-center gap-3 shrink-0">
                   <div className="w-8 text-center">
-                    <span className={`font-heading font-black text-sm ${isUser ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-700 dark:text-slate-300'}`}>
+                    <span className={`font-heading font-black text-sm ${isUser ? 'text-blue-600 dark:text-cyan-400' : 'text-slate-700 dark:text-slate-300'}`}>
                       #{player.rank}
                     </span>
                     <div className="flex items-center justify-center text-[10px] mt-0.5">
                       {player.rankChange === 'up' ? (
-                        <span className="text-emerald-500 flex items-center font-bold">
+                        <span className="text-cyan-400 flex items-center font-bold">
                           <ArrowUp className="w-3 h-3" />
                         </span>
                       ) : player.rankChange === 'down' ? (
@@ -53,7 +53,7 @@ export default function LeaderboardList({ rankedPlayers = [], currentUserId = nu
                           <ArrowDown className="w-3 h-3" />
                         </span>
                       ) : player.rankChange === 'new' ? (
-                        <span className="text-[9px] font-bold text-sky-500 uppercase">NEW</span>
+                        <span className="text-[9px] font-bold text-sky-400 uppercase">NEW</span>
                       ) : (
                         <span className="text-slate-400">
                           <Minus className="w-2.5 h-2.5" />
@@ -64,20 +64,20 @@ export default function LeaderboardList({ rankedPlayers = [], currentUserId = nu
 
                   {/* Avatar */}
                   <div className={`w-10 h-10 rounded-full font-heading font-bold text-xs flex items-center justify-center shrink-0 border ${
-                    isUser ? 'bg-emerald-600 text-white border-white' : 'bg-slate-800 text-slate-200 border-slate-700'
+                    isUser ? 'bg-blue-600 text-white border-white' : 'bg-slate-800 text-slate-200 border-slate-700'
                   }`}>
-                    {player.initials || 'ES'}
+                    {player.initials || 'ET'}
                   </div>
                 </div>
 
                 {/* Center: Name, City & Meta */}
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <h4 className={`font-heading font-bold text-sm truncate ${isUser ? 'text-emerald-700 dark:text-emerald-300' : 'text-slate-900 dark:text-white'}`}>
+                    <h4 className={`font-heading font-bold text-sm truncate ${isUser ? 'text-blue-700 dark:text-cyan-300' : 'text-slate-900 dark:text-white'}`}>
                       {player.name}
                     </h4>
                     {isUser && (
-                      <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-emerald-500 text-white">
+                      <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-blue-600 text-white">
                         YOU
                       </span>
                     )}
@@ -106,7 +106,7 @@ export default function LeaderboardList({ rankedPlayers = [], currentUserId = nu
                 {/* Right: Eco Points */}
                 <div className="text-right shrink-0">
                   <span className={`text-base sm:text-lg font-heading font-black tabular-nums ${
-                    isUser ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-900 dark:text-white'
+                    isUser ? 'text-blue-600 dark:text-cyan-400' : 'text-slate-900 dark:text-white'
                   }`}>
                     {score.toLocaleString()}
                   </span>

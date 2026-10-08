@@ -15,7 +15,7 @@ export default function Podium({ topThree = [] }) {
         particleCount: 40,
         spread: 60,
         origin: { y: 0.3 },
-        colors: ['#10B981', '#38BDF8', '#F59E0B', '#34D399']
+        colors: ['#2563EB', '#38BDF8', '#06B6D4', '#F59E0B']
       });
     } catch (e) {}
   }, []);
@@ -76,7 +76,7 @@ export default function Podium({ topThree = [] }) {
 
           {/* Avatar & Rank 1 badge */}
           <div className="relative mb-2">
-            <div className="w-18 h-18 sm:w-20 sm:h-20 rounded-full bg-slate-950 text-amber-400 font-heading font-black text-2xl flex items-center justify-center border-4 border-amber-400 shadow-glow-amber">
+            <div className="w-18 h-18 sm:w-20 sm:h-20 rounded-full bg-slate-950 text-cyan-400 font-heading font-black text-2xl flex items-center justify-center border-4 border-cyan-400 shadow-glow-cyan">
               {first.initials || '1'}
             </div>
             <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-amber-400 text-slate-950 font-heading font-black text-xs flex items-center justify-center shadow-md">
@@ -87,19 +87,19 @@ export default function Podium({ topThree = [] }) {
           <span className="font-heading font-black text-sm sm:text-base text-slate-900 dark:text-white truncate max-w-[110px] sm:max-w-[150px] block">
             {first.name}
           </span>
-          <span className="text-[11px] text-amber-600 dark:text-amber-400 font-semibold flex items-center justify-center gap-0.5 mt-0.5">
+          <span className="text-[11px] text-cyan-500 dark:text-cyan-400 font-semibold flex items-center justify-center gap-0.5 mt-0.5">
             <Sparkles className="w-3 h-3" />
             <span>{first.city}</span>
           </span>
 
-          <div className="font-heading font-black text-base sm:text-lg text-emerald-600 dark:text-emerald-400 mt-1">
+          <div className="font-heading font-black text-base sm:text-lg text-blue-600 dark:text-cyan-400 mt-1">
             {first.displayScore || first.weeklyPoints || 0} <span className="text-xs font-normal text-slate-400">pts</span>
           </div>
 
           {/* Podium Pillar */}
-          <div className="w-full h-32 sm:h-36 rounded-t-2xl bg-gradient-to-t from-amber-400/20 via-amber-300/30 to-amber-200/40 dark:from-amber-950/40 dark:via-amber-900/30 dark:to-amber-800/30 border-t-2 border-l border-r border-amber-400/60 mt-2 flex items-center justify-center shadow-lg relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-t from-amber-500/10 to-transparent pointer-events-none"></div>
-            <span className="font-heading font-black text-3xl text-amber-500/40">1</span>
+          <div className="w-full h-32 sm:h-36 rounded-t-2xl bg-gradient-to-t from-blue-500/20 via-cyan-400/20 to-blue-400/30 dark:from-blue-950/60 dark:via-blue-900/40 dark:to-cyan-900/40 border-t-2 border-l border-r border-cyan-400/60 mt-2 flex items-center justify-center shadow-lg relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/10 to-transparent pointer-events-none"></div>
+            <span className="font-heading font-black text-3xl text-cyan-500/40">1</span>
           </div>
         </motion.div>
 

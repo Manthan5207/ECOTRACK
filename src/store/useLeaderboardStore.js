@@ -225,7 +225,7 @@ export const useLeaderboardStore = create(
       }
     }),
     {
-      name: 'ecosphere_leaderboard_storage',
+      name: 'ecotrack_leaderboard_storage',
       partialize: (state) => ({
         players: state.players,
         events: state.events,

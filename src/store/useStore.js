@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { ACTIONS } from '../data/actions';
 import { BENCHMARKS } from '../data/factors';
+import { INITIAL_SAMPLE_LOGS } from '../data/activityFactors';
 
 export const useStore = create(
   persist(
@@ -43,6 +44,32 @@ export const useStore = create(
         get().checkBadges();
       },
 
+      // Daily Activity Logging State
+      activityLogs: INITIAL_SAMPLE_LOGS,
+      addActivityLog: (logItem) => {
+        const newLog = {
+          id: `log-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`,
+          timestamp: Date.now(),
+          date: logItem.date || new Date().toISOString().split('T')[0],
+          ...logItem
+        };
+        const updated = [newLog, ...get().activityLogs];
+        set({ activityLogs: updated });
+        get().incrementStreak();
+        get().recalculateEcoScore();
+        get().checkBadges();
+        return newLog;
+      },
+      deleteActivityLog: (id) => {
+        const updated = get().activityLogs.filter(l => l.id !== id);
+        set({ activityLogs: updated });
+        get().recalculateEcoScore();
+      },
+
+      // Monthly Carbon Budget State (in kg CO2 / month)
+      carbonBudget: 180, // Default 180 kg CO2 target per month
+      setCarbonBudget: (budgetKg) => set({ carbonBudget: Number(budgetKg) || 180 }),
+
       // Pledges state (action IDs)
       pledges: ['metro-commute', 'ac-temp-24', 'switch-led', 'plant-5-trees'],
       togglePledge: (actionId) => {
@@ -60,9 +87,9 @@ export const useStore = create(
       },
 
       // Gamification State
-      ecoScore: 78,
-      badges: ['first-step', 'pledge-hero'],
-      streak: 4,
+      ecoScore: 82,
+      badges: ['first-step', 'pledge-hero', 'active-tracker'],
+      streak: 5,
       lastStreakCheckin: new Date().toISOString().split('T')[0],
 
       incrementStreak: () => {
@@ -110,6 +137,11 @@ export const useStore = create(
           unlocked.push('streak-master');
         }
 
+        // Has logged activities
+        if (state.activityLogs.length >= 3 && !unlocked.includes('active-tracker')) {
+          unlocked.push('active-tracker');
+        }
+
         set({ badges: unlocked });
       },
 
@@ -118,7 +150,6 @@ export const useStore = create(
         const footprintTonnes = (state.footprint.total || 2500) / 1000;
         
         // Base score: 100 max, penalised by excess over sustainable target (2.3t)
-        // If footprint <= 2.3t, score 70-90. If higher, drops towards 30-50.
         let baseScore = Math.max(20, Math.min(85, Math.round(90 - (footprintTonnes / BENCHMARKS.worldAvg) * 45)));
 
         // Bonus for pledges (+3 points each, max 20)
@@ -127,7 +158,11 @@ export const useStore = create(
         // Bonus for streak (+1 per day, max 10)
         const streakBonus = Math.min(10, state.streak * 1.5);
 
-        const totalScore = Math.min(100, Math.max(10, Math.round(baseScore + pledgeBonus + streakBonus)));
+        // Bonus for logged activities savings (max 10)
+        const totalActivitySavingsKg = (state.activityLogs || []).reduce((sum, log) => sum + (log.savingsKg || 0), 0);
+        const activityBonus = Math.min(10, Math.round(totalActivitySavingsKg * 0.5));
+
+        const totalScore = Math.min(100, Math.max(10, Math.round(baseScore + pledgeBonus + streakBonus + activityBonus)));
         set({ ecoScore: totalScore });
       },
 
@@ -137,7 +172,7 @@ export const useStore = create(
       toggleTheme: () => set((state) => ({ theme: state.theme === 'dark' ? 'light' : 'dark' })),
     }),
     {
-      name: 'ecosphere-storage-v1',
+      name: 'ecotrack-storage-v1',
     }
   )
 );

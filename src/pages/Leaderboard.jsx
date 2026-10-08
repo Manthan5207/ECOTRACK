@@ -91,7 +91,7 @@ export default function Leaderboard() {
       <WinnerBanner />
 
       {/* 2. Header & Live Countdown Card */}
-      <div className="glass-card p-5 sm:p-8 rounded-3xl border border-white/60 dark:border-emerald-500/20 relative overflow-hidden shadow-floating-hero">
+      <div className="glass-card p-5 sm:p-8 rounded-3xl border border-white/60 dark:border-blue-500/20 relative overflow-hidden shadow-floating-hero">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
@@ -116,7 +116,7 @@ export default function Leaderboard() {
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full md:w-auto">
             {/* Countdown Badge */}
             <div className="px-4 py-2 rounded-2xl bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 flex items-center gap-2">
-              <Clock className="w-4 h-4 text-emerald-500 animate-pulse" />
+              <Clock className="w-4 h-4 text-cyan-400 animate-pulse" />
               <div>
                 <span className="text-[10px] text-slate-400 uppercase font-semibold block">Ends In</span>
                 <span className="font-heading font-black text-xs sm:text-sm text-slate-900 dark:text-white font-mono">
@@ -128,7 +128,7 @@ export default function Leaderboard() {
             {/* How points work button */}
             <button
               onClick={() => setRulesModalOpen(true)}
-              className="px-4 py-2 rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 text-xs font-bold flex items-center justify-center gap-1.5 transition-colors"
+              className="px-4 py-2 rounded-2xl bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-cyan-400 border border-blue-500/30 text-xs font-bold flex items-center justify-center gap-1.5 transition-colors"
             >
               <HelpCircle className="w-4 h-4" />
               <span>How Points Work</span>
@@ -137,13 +137,13 @@ export default function Leaderboard() {
         </div>
       </div>
 
-      {/* 3. Top 3 Champions Podium (shown in 'this-week' or 'last-week') */}
+      {/* 3. Top 3 Champions Podium */}
       {timeframe !== 'all-time' && topThree.length >= 3 && (
         <Podium topThree={topThree} />
       )}
 
       {/* 4. Controls: Timeframe Tabs & Scope/Category Filters */}
-      <div className="glass-card p-4 rounded-2xl border border-white/60 dark:border-emerald-500/20 space-y-3">
+      <div className="glass-card p-4 rounded-2xl border border-white/60 dark:border-blue-500/20 space-y-3">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           {/* Timeframe Tabs */}
           <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-900 p-1 rounded-xl w-full sm:w-auto">
@@ -157,7 +157,7 @@ export default function Leaderboard() {
                 onClick={() => setTimeframe(tab.id)}
                 className={`flex-1 sm:flex-initial px-4 py-1.5 rounded-lg text-xs font-heading font-bold transition-all ${
                   timeframe === tab.id
-                    ? 'bg-emerald-600 text-white shadow-sm'
+                    ? 'bg-blue-600 text-white shadow-sm'
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
@@ -178,8 +178,8 @@ export default function Leaderboard() {
                 onClick={() => setScope(s.id)}
                 className={`text-xs px-3 py-1.5 rounded-xl font-semibold transition-all whitespace-nowrap border ${
                   scope === s.id
-                    ? 'bg-slate-900 text-white dark:bg-emerald-500 dark:text-white border-transparent'
-                    : 'bg-white/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-emerald-500/40'
+                    ? 'bg-slate-900 text-white dark:bg-cyan-500 dark:text-slate-950 font-bold border-transparent'
+                    : 'bg-white/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-cyan-500/40'
                 }`}
               >
                 {s.label}
@@ -206,7 +206,7 @@ export default function Leaderboard() {
               onClick={() => setCategory(c.id)}
               className={`text-xs px-2.5 py-1 rounded-lg font-medium transition-all whitespace-nowrap ${
                 category === c.id
-                  ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-500/30'
+                  ? 'bg-blue-500/15 text-blue-600 dark:text-cyan-400 font-bold border border-blue-500/30'
                   : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
               }`}
             >
@@ -246,8 +246,8 @@ export default function Leaderboard() {
               top3Score={top3Score}
             />
           ) : (
-            <div className="p-5 rounded-3xl glass-card border border-emerald-500/30 text-center space-y-3 shadow-md">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto">
+            <div className="p-5 rounded-3xl glass-card border border-blue-500/30 text-center space-y-3 shadow-md">
+              <div className="w-12 h-12 rounded-2xl bg-blue-500/15 text-blue-600 dark:text-cyan-400 flex items-center justify-center mx-auto">
                 <Trophy className="w-6 h-6" />
               </div>
               <h4 className="font-heading font-bold text-base text-slate-900 dark:text-white">
@@ -258,7 +258,7 @@ export default function Leaderboard() {
               </p>
               <Link
                 to="/login"
-                className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-heading font-bold text-xs shadow-glow-emerald transition-all"
+                className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-heading font-bold text-xs shadow-glow-blue transition-all"
               >
                 <User className="w-3.5 h-3.5" />
                 <span>Log in to Compete</span>
@@ -272,8 +272,8 @@ export default function Leaderboard() {
           />
 
           {/* Quick Green Choice Hint */}
-          <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-slate-700 dark:text-slate-300 space-y-1">
-            <span className="font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+          <div className="p-4 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-xs text-slate-700 dark:text-slate-300 space-y-1">
+            <span className="font-bold text-blue-600 dark:text-cyan-400 flex items-center gap-1">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Pro Tip: Daily Green Choices</span>
             </span>
@@ -289,10 +289,10 @@ export default function Leaderboard() {
 
       {/* 7. Sticky Bottom "Your Rank" Bar */}
       {user && currentUserRow && (
-        <div className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-[#0D1B1E]/95 backdrop-blur-md border-t border-emerald-500/30 px-4 py-2.5 shadow-2xl">
+        <div className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-[#030712]/95 backdrop-blur-md border-t border-blue-500/30 px-4 py-2.5 shadow-2xl">
           <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-emerald-600 text-white font-heading font-bold text-xs flex items-center justify-center border border-white">
+              <div className="w-8 h-8 rounded-full bg-blue-600 text-white font-heading font-bold text-xs flex items-center justify-center border border-white">
                 #{userRank}
               </div>
               <div>
@@ -308,7 +308,7 @@ export default function Leaderboard() {
             <div className="flex items-center gap-2">
               <Link
                 to="/actions"
-                className="px-4 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-sm transition-all"
+                className="px-4 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white text-xs font-bold shadow-sm transition-all"
               >
                 Pledge +20 pts
               </Link>

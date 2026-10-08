@@ -17,7 +17,7 @@ import { useStore } from './useStore';
 
 const DEFAULT_PROFILE = {
   displayName: 'Alex Sharma',
-  email: 'alex.sharma@ecosphere.app',
+  email: 'alex.sharma@ecotrack.app',
   photoURL: '',
   initials: 'AS',
   providerLabel: 'Demo Account',
@@ -40,7 +40,7 @@ const DEFAULT_PROFILE = {
 
 const DEMO_USER_PROFILE = {
   displayName: 'Aarav Sharma',
-  email: 'aarav.demo@ecosphere.app',
+  email: 'aarav.demo@ecotrack.app',
   photoURL: '',
   initials: 'AS',
   providerLabel: 'Demo Account',
@@ -88,7 +88,7 @@ export const useAuthStore = create(
           if (firebaseUser) {
             const uid = firebaseUser.uid;
             // Load existing profile from localStorage if present
-            const savedProfileRaw = localStorage.getItem(`ecosphere_profile_${uid}`);
+            const savedProfileRaw = localStorage.getItem(`ecotrack_profile_${uid}`);
             let profileData = null;
             if (savedProfileRaw) {
               try {
@@ -111,7 +111,7 @@ export const useAuthStore = create(
                   : 'Signed in with Email',
                 hasCompletedOnboarding: false,
               };
-              localStorage.setItem(`ecosphere_profile_${uid}`, JSON.stringify(profileData));
+              localStorage.setItem(`ecotrack_profile_${uid}`, JSON.stringify(profileData));
             }
 
             set({
@@ -205,7 +205,7 @@ export const useAuthStore = create(
             providerLabel: 'Signed in with Email',
             hasCompletedOnboarding: false,
           };
-          localStorage.setItem(`ecosphere_profile_${uid}`, JSON.stringify(newProfile));
+          localStorage.setItem(`ecotrack_profile_${uid}`, JSON.stringify(newProfile));
           set({ profile: newProfile });
           return res.user;
         } catch (err) {
@@ -241,7 +241,7 @@ export const useAuthStore = create(
       loginDemo: () => {
         const demoUser = {
           uid: 'demo-aarav-sharma-2026',
-          email: 'aarav.demo@ecosphere.app',
+          email: 'aarav.demo@ecotrack.app',
           displayName: 'Aarav Sharma',
           photoURL: '',
         };
@@ -262,7 +262,7 @@ export const useAuthStore = create(
           badges: ['first-step', 'energy-saver', 'streak-3']
         });
 
-        localStorage.setItem('ecosphere_profile_demo-aarav-sharma-2026', JSON.stringify(DEMO_USER_PROFILE));
+        localStorage.setItem('ecotrack_profile_demo-aarav-sharma-2026', JSON.stringify(DEMO_USER_PROFILE));
       },
 
       // Continue as Guest
@@ -276,7 +276,7 @@ export const useAuthStore = create(
         const guestProfile = {
           ...DEFAULT_PROFILE,
           displayName: 'Guest Explorer',
-          email: 'guest@ecosphere.local',
+          email: 'guest@ecotrack.local',
           initials: 'GE',
           providerLabel: 'Guest Session',
           hasCompletedOnboarding: true,
@@ -302,7 +302,7 @@ export const useAuthStore = create(
 
         const user = get().user;
         if (user?.uid) {
-          localStorage.setItem(`ecosphere_profile_${user.uid}`, JSON.stringify(newProfile));
+          localStorage.setItem(`ecotrack_profile_${user.uid}`, JSON.stringify(newProfile));
         }
 
         // Sync location if updated
@@ -336,10 +336,10 @@ export const useAuthStore = create(
       deleteLocalData: () => {
         const user = get().user;
         if (user?.uid) {
-          localStorage.removeItem(`ecosphere_profile_${user.uid}`);
+          localStorage.removeItem(`ecotrack_profile_${user.uid}`);
         }
-        localStorage.removeItem('ecosphere_auth_storage');
-        localStorage.removeItem('ecosphere_user_storage');
+        localStorage.removeItem('ecotrack_auth_storage');
+        localStorage.removeItem('ecotrack_user_storage');
         get().logout();
       },
 
@@ -359,7 +359,7 @@ export const useAuthStore = create(
       }
     }),
     {
-      name: 'ecosphere_auth_storage',
+      name: 'ecotrack_auth_storage',
       partialize: (state) => ({
         user: state.user,
         profile: state.profile,

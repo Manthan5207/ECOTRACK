@@ -2,31 +2,24 @@ import React from 'react';
 import { Sun, Moon } from 'lucide-react';
 import { useStore } from '../../store/useStore';
 
-export default function ThemeToggle({ className = '' }) {
-  const { theme, toggleTheme } = useStore();
-  const isDark = theme === 'dark';
+export default function ThemeToggle() {
+  const { isDark, toggleTheme } = useStore();
 
   return (
     <button
       onClick={toggleTheme}
-      type="button"
-      aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
-      className={`relative inline-flex items-center w-14 h-7 p-0.5 rounded-full transition-colors duration-300 focus:outline-none ${
-        isDark ? 'bg-slate-800 border border-emerald-500/30' : 'bg-slate-200 border border-slate-300'
-      } ${className}`}
+      aria-label="Toggle dark mode"
+      className={`relative p-2 rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+        isDark ? 'bg-slate-800 border border-blue-500/30' : 'bg-slate-200 border border-slate-300'
+      }`}
     >
-      <span className="sr-only">Toggle theme</span>
-      <span
-        className={`flex items-center justify-center w-6 h-6 rounded-full bg-white dark:bg-slate-900 shadow-md transform transition-transform duration-300 ease-in-out ${
-          isDark ? 'translate-x-7 text-amber-400' : 'translate-x-0 text-slate-700'
-        }`}
-      >
+      <div className="relative w-5 h-5 flex items-center justify-center">
         {isDark ? (
-          <Moon className="w-3.5 h-3.5 fill-current" />
+          <Sun className="w-4 h-4 text-amber-400 transition-transform duration-300 rotate-0 hover:rotate-90" />
         ) : (
-          <Sun className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
+          <Moon className="w-4 h-4 text-slate-700 transition-transform duration-300 rotate-0 hover:-rotate-12" />
         )}
-      </span>
+      </div>
     </button>
   );
 }

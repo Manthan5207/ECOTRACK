@@ -50,13 +50,13 @@ export default function ActionPlan() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-8">
       {/* Title & Share Action Button */}
-      <div className="pb-2 border-b border-emerald-500/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="pb-2 border-b border-blue-500/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-2xl sm:text-3xl font-heading font-black text-slate-900 dark:text-white">
               Personalized Climate Action Plan
             </h1>
-            <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
+            <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-blue-500/15 text-blue-600 dark:text-cyan-400 border border-blue-500/30">
               Ranked by ROI
             </span>
           </div>
@@ -67,7 +67,7 @@ export default function ActionPlan() {
 
         <button
           onClick={() => setShareModalOpen(true)}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-heading font-bold text-xs sm:text-sm shadow-glow-emerald transition-all active:scale-95"
+          className="flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-heading font-bold text-xs sm:text-sm shadow-glow-blue transition-all active:scale-95"
         >
           <Share2 className="w-4 h-4" />
           <span>Export Eco Share Card</span>
@@ -94,10 +94,10 @@ export default function ActionPlan() {
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`text-xs px-3 py-1.5 rounded-xl font-semibold uppercase tracking-wider transition-all whitespace-nowrap ${
+              className={`text-xs px-3.5 py-1.5 rounded-xl font-semibold uppercase tracking-wider transition-all whitespace-nowrap ${
                 selectedCategory === cat
-                  ? 'bg-emerald-500 text-white shadow-sm'
-                  : 'bg-white/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 hover:bg-emerald-50 dark:hover:bg-slate-800'
+                  ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
+                  : 'bg-white/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-slate-800'
               }`}
             >
               {cat === 'all' ? 'All Actions' : cat}

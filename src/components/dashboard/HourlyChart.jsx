@@ -48,7 +48,7 @@ export default function HourlyChart({ hourly = [] }) {
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-slate-900/95 text-white p-3 rounded-xl border border-emerald-500/30 shadow-xl text-xs">
+        <div className="bg-slate-900/95 text-white p-3 rounded-xl border border-blue-500/30 shadow-xl text-xs">
           <p className="font-semibold text-slate-400 mb-1">{label} Forecast</p>
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: current.stroke }}></span>
@@ -75,7 +75,7 @@ export default function HourlyChart({ hourly = [] }) {
         </div>
 
         {/* Toggle Pills */}
-        <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-900/60 p-1 rounded-xl border border-emerald-500/10">
+        <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-900/60 p-1 rounded-xl border border-blue-500/10">
           <button
             onClick={() => setMetric('aqi')}
             className={`px-3 py-1 text-xs font-semibold rounded-lg transition-all ${
@@ -90,7 +90,7 @@ export default function HourlyChart({ hourly = [] }) {
             onClick={() => setMetric('temp')}
             className={`px-3 py-1 text-xs font-semibold rounded-lg transition-all ${
               metric === 'temp'
-                ? 'bg-sky-500 text-white shadow-sm'
+                ? 'bg-blue-600 text-white shadow-sm'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
